@@ -20,7 +20,8 @@ __Example 3:__
     Explanation: The answer is "wke", with the length of 3. 
 ``` 
 ## Solution
-* Use hash_set O(n)
+* Use hash_set O(n)  
+It's a classic **two-pointer** problem. Use a set to keep the characters in the current sub-string. If we meet a repeat character, we should delete the character in the set until we meet the character that failed the previous insertion. After the delete of the naughty dude obstruct us from inserting, we could insert the new character. During this process, we could use `i,j` to record the start and the end of the current sub-string.
 ```cpp
 public:
     int lengthOfLongestSubstring(string s) {
@@ -42,7 +43,8 @@ public:
     }
 };
 ```
-* Use hash_map O(n)
+* Use hash_map O(n)  
+It's almost the same as the hash_set. The part it modified is that the map could record the index of the obstruction character and make us easy to modify the `slow pointer` directly to the position we want. So it's save some time.
 ```cpp
 class Solution {
 public:
@@ -66,7 +68,9 @@ public:
     }
 };
 ```
-* Use ascii array O(n)
+* Use ascii array O(n)  
+Assume the input could handle by ascii. We use the array instead of the hash_map to record the index. So less computation, less cost.
+
 ```cpp
 class Solution {
 public:
