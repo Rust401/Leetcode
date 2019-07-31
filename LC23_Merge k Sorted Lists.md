@@ -1,7 +1,7 @@
 # Merge k Sorted Lists(LeetCode 23)  
 ## Description
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 
-__Example 1:__  
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.   
+__Example:__  
 ```
 Input:
 [
