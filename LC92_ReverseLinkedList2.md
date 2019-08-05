@@ -10,7 +10,7 @@ Output: 1->4->3->2->5->NULL
 ```
 ## Solution
 Fvking easy. Just reverse.
-__iterative:__
+__1:__
 ```cpp
 /**
  * Definition for singly-linked list.
@@ -37,6 +37,45 @@ public:
             pre->next->next=tmp;
         }
         return dummy->next;
+    }
+};
+```
+__2:__
+```cpp
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int m, int n) {
+        if(head==nullptr||head->next==nullptr){
+            return head;
+        }
+        int mm=m;
+        int pm=m-1;
+        int nn=n;
+        ListNode* dummy=new ListNode(0);
+        dummy->next=head;
+        ListNode* slow=dummy;;
+        ListNode* fast=dummy;
+        ListNode* pre=dummy;
+        while(pm--){
+            pre=pre->next;
+            slow=slow->next;
+        }
+        slow=slow->next;
+        while(nn--){
+            fast=fast->next;
+        }
+        fast=fast->next;
+        int times=n-m+1;
+        while(times--){
+            ListNode* tmp=slow->next;
+            slow->next=fast;
+            fast=slow;
+            slow=tmp;
+        }
+        pre->next=fast;
+        ListNode* result=dummy->next;
+        delete dummy;
+        return result;
     }
 };
 ```
