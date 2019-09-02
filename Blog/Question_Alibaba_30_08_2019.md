@@ -27,44 +27,6 @@ some problems in the test of **ALIBABA**. No need to review before the test. Jus
 
 6. A string is **"aAbBcCdDeEfFgGhHiIjJkKlLmMnN"**. We could only swap adjacent characters. If we want to use swap to change the string to **"abcdefghijklmnABCDEFGHIJKLMN"**. How many times should we swap **at least**?
 
-7. We have 64 bits all have the value 0. Each bit has an index start from **0** and end with **63**. Now we generate 64 random numbers range from 0 to 63. The bit with the index equal to the generated random number will become 1. So after 64 generating the rate of the 1 in the 64 bits will be?
+7. We have **64** bits all have the value 0. Each bit has an index start from **0** and end up with **63**. Now we generate 64 random numbers range from **0** to **63**. The bit with the index equal to the generated random number will become 1. So after 64 generating the rate of the 1 in the 64 bits will be?
 ## Solution
-_the orginal one_
-```cpp
-class Solution {
-public:
-    int maxArea(vector<int>& height) {
-        int maxVol=0,tempVol=0,h=0;
-        for(int i=0;i<height.size()-1;i++){
-            for(int j=i+1;j<height.size();j++){
-                if(height[i]<height[j])
-                    h=height[i];
-                else    
-                    h=height[j];
-                tempVol=(j-i)*h;
-                if(tempVol>maxVol)
-                    maxVol=tempVol;
-            }
-        }
-        return maxVol;
-    }
-};
-```
-_the better one_
-```cpp
-class Solution {
-public:
-    int maxArea( vector<int>& height ) {
-        int maxVol = -1;
-        int start = 0;
-        int end = height.size() - 1;
-        int temp;
-        while( start < end ) {
-            temp = min( height[start], height[end] ) * ( end-start );
-            if( maxVol < temp  ) maxVol = temp;
-            if( height[start] < height[end] )
-                start++;
-            else
-                end--;
-        }
-        return maxVol;
+
